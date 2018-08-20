@@ -53,6 +53,34 @@ BasePlugin class for DocPad
 
 [Complete API Documentation.](http://master.docpad-baseplugin.docpad.surge.sh/docs/)
 
+Create your plugins using CoffeeScript like so:
+
+``` coffee
+module.exports = class MyPlugin extends require('docpad-baseplugin') {
+    name: 'myplugin'
+    initialConfig: {}
+    # ...
+}
+```
+
+Create your plugins using JavaScript like so:
+
+``` javascript
+module.exports = class MyPlugin extends require('docpad-baseplugin') {
+    get name () {
+        return 'myplugin'
+    }
+    get initialConfig () {
+        return {}
+    }
+    // ...
+}
+```
+
+You can use [boundation](https://github.com/bevry/boundation) to scaffold the above.
+
+To setup tests, see [docpad-plugintester](https://github.com/docpad/docpad-plugintester).
+
 
 <!-- HISTORY/ -->
 
