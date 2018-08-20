@@ -43,12 +43,28 @@ class BasePlugin {
 		// ---------------------------------
 		// Variables
 
-		/**
-		 * The plugin name
-		 * @type {String}
-		 */
+		try {
+			/**
+			 * The plugin name
+			 * @type {String}
+			 */
+			this.name = this.name || null
+		}
+		catch (err) {
+			// ignore, as must be exposed via a getter, in which case it won't have reference issues
+		}
 
-		this.name = this.name || null
+		try {
+			/**
+			 * Plugin priority
+			 * @private
+			 * @type {Number}
+			 */
+			this.priority = this.priority || 500
+		}
+		catch (err) {
+			// ignore, as must be exposed via a getter, in which case it won't have reference issues
+		}
 
 		try {
 			/**
@@ -77,13 +93,6 @@ class BasePlugin {
 		// Setup the configuration so that there are not reference errors
 		this.config = extendr.clone(this.config || {})
 
-		/**
-		 * Plugin priority
-		 * @private
-		 * @type {Number}
-		 */
-
-		this.priority = this.priority || 500
 
 		// ---------------------------------
 		// Construct
