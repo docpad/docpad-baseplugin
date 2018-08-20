@@ -288,6 +288,24 @@ class BasePlugin {
 	isEnabled () {
 		return this.config.enabled !== false
 	}
+
+	/**
+	 * Whether or not this is a DocPad Plugin
+	 * @static
+	 * @param {*} [value]
+	 * 	The value to determine if it is a DocPad plugin.
+	 * 	If omitted, will return `true` to indicate that the class is a DocPad Plugin class.
+	 * @returns {boolean}
+	 */
+	static isDocPadPlugin (value) {
+		if (value != null) {
+			return value instanceof this
+		}
+		else {
+			return true
+		}
+	}
+
 }
 
 
