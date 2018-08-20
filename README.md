@@ -53,6 +53,12 @@ BasePlugin class for DocPad
 
 [Complete API Documentation.](http://master.docpad-baseplugin.docpad.surge.sh/docs/)
 
+Install the dependency like so:
+
+``` bash
+npm install --save docpad-baseplugin
+```
+
 Create your plugins using CoffeeScript like so:
 
 ``` coffee
