@@ -81,17 +81,13 @@ class BasePlugin {
 		 * The instance config
 		 * @type {Object}
 		 */
-
-		// Setup the configuration so that there are not reference errors
-		this.instanceConfig = extendr.clone(this.instanceConfig || {})
+		this.instanceConfig = {}
 
 		/**
 		 * The plugin config
 		 * @type {Object}
 		 */
-
-		// Setup the configuration so that there are not reference errors
-		this.config = extendr.clone(this.config || {})
+		this.config = {}
 
 
 		// ---------------------------------
