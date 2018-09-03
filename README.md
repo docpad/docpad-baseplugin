@@ -44,7 +44,7 @@ BasePlugin class for DocPad
 
 <ul><li><code>docpad-baseplugin</code> aliases <code>docpad-baseplugin/index.js</code> which uses <a href="https://github.com/bevry/editions" title="Editions are the best way to produce and consume packages you care about.">Editions</a> to automatically select the correct edition for the consumers environment</li>
 <li><code>docpad-baseplugin/source/index.js</code> is esnext source code with require for modules</li>
-<li><code>docpad-baseplugin/edition:node:0.10/index.js</code> is esnext compiled for node.js >=0.10 with require for modules</li></ul>
+<li><code>docpad-baseplugin/edition-node-0.10/index.js</code> is esnext compiled for node.js >=0.10 with require for modules</li></ul>
 
 <!-- /INSTALL -->
 
