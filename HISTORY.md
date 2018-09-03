@@ -1,5 +1,8 @@
 # History
 
+## v1.0.2 2018 September 3
+- Updated base files and [editions](https://github.com/bevry/editions) using [boundation](https://github.com/bevry/boundation)
+
 ## v1.0.1 2018 August 20
 - Add `isDocPadPlugin` static method, to make it easier for DocPad to detect plugins
 - Support getters for `name` and `priority`
