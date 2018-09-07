@@ -1,5 +1,8 @@
 # History
 
+## v1.0.3 2018 September 7
+- Remove `setInstanceConfig` and make use of DocPad 6.82.0's new `mergeConfigs` method
+
 ## v1.0.2 2018 September 3
 - Updated base files and [editions](https://github.com/bevry/editions) using [boundation](https://github.com/bevry/boundation)
 

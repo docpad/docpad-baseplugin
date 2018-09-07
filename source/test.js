@@ -12,7 +12,7 @@ const opts = {
 		getEvents () {
 			return []
 		},
-		mergeConfigurations () {
+		mergeConfigs () {
 			return {}
 		}
 	}

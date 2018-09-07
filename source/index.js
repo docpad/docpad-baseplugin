@@ -107,24 +107,6 @@ class BasePlugin {
 	}
 
 	/**
-	 * Set Instance Configuration
-	 * @private
-	 * @param {Object} instanceConfig
-	 * @returns {BasePlugin} this
-	 * @chainable
-	 */
-	setInstanceConfig (instanceConfig) {
-		// Merge in the instance configurations
-		if (instanceConfig) {
-			extendr.deepDefaults(this.instanceConfig, instanceConfig)
-			if (this.config) {
-				extendr.deepDefaults(this.config, instanceConfig)
-			}
-		}
-		return this
-	}
-
-	/**
 	 * Set Configuration
 	 * @private
 	 * @param {Object} [instanceConfig]
@@ -139,15 +121,13 @@ class BasePlugin {
 		// Reset the configuration
 		this.config = docpad.config.plugins[this.name] = {}
 
-		// Apply as instance configuration
+		// Merge in the instance configuration
 		if (instanceConfig) {
-			this.setInstanceConfig(instanceConfig)
+			extendr.deepDefaults(this.instanceConfig, instanceConfig)
 		}
 
 		// Merge configurations
-		const configPackages = [this.initialConfig, userConfig, this.instanceConfig]
-		const configsToMerge = [this.config]
-		docpad.mergeConfigurations(configPackages, configsToMerge)
+		this.config = docpad.mergeConfigs([this.initialConfig, userConfig, this.instanceConfig])
 
 		// Remove listeners if we are disabled
 		if (this.isEnabled() === false) {
