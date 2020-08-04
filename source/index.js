@@ -19,14 +19,15 @@ const eachr = require('eachr')
  * @param {BasePluginOptions} opts
  */
 class BasePlugin {
-
-	constructor (opts) {
+	constructor(opts) {
 		// Prepare
 		const { docpad, config } = opts
 
 		// Validate
 		if (this.initialConfig && this.config) {
-			throw new Errlop(`Plugin ${this.name} is misconfigured, it has both @config and @initialConfig defined, it can only have one or the other, preferably @initialConfig`)
+			throw new Errlop(
+				`Plugin ${this.name} is misconfigured, it has both @config and @initialConfig defined, it can only have one or the other, preferably @initialConfig`
+			)
 		}
 
 		// ---------------------------------
@@ -49,8 +50,7 @@ class BasePlugin {
 			 * @type {String}
 			 */
 			this.name = this.name || null
-		}
-		catch (err) {
+		} catch (err) {
 			// ignore, as must be exposed via a getter, in which case it won't have reference issues
 		}
 
@@ -61,8 +61,7 @@ class BasePlugin {
 			 * @type {Number}
 			 */
 			this.priority = this.priority || 500
-		}
-		catch (err) {
+		} catch (err) {
 			// ignore, as must be exposed via a getter, in which case it won't have reference issues
 		}
 
@@ -71,9 +70,10 @@ class BasePlugin {
 			 * The initial config
 			 * @type {Object}
 			 */
-			this.initialConfig = extendr.clone(this.initialConfig || this.config || {})
-		}
-		catch (err) {
+			this.initialConfig = extendr.clone(
+				this.initialConfig || this.config || {}
+			)
+		} catch (err) {
 			// ignore, as must be exposed via a getter, in which case it won't have reference issues
 		}
 
@@ -88,7 +88,6 @@ class BasePlugin {
 		 * @type {Object}
 		 */
 		this.config = {}
-
 
 		// ---------------------------------
 		// Construct
@@ -113,7 +112,7 @@ class BasePlugin {
 	 * @returns {BasePlugin} this
 	 * @chainable
 	 */
-	setConfig (instanceConfig) {
+	setConfig(instanceConfig) {
 		// Prepare
 		const docpad = this.docpad
 		const userConfig = docpad.config.plugins[this.name]
@@ -127,7 +126,11 @@ class BasePlugin {
 		}
 
 		// Merge configurations
-		this.config = docpad.mergeConfigs([this.initialConfig, userConfig, this.instanceConfig])
+		this.config = docpad.mergeConfigs([
+			this.initialConfig,
+			userConfig,
+			this.instanceConfig,
+		])
 
 		// Remove listeners if we are disabled
 		if (this.isEnabled() === false) {
@@ -143,7 +146,7 @@ class BasePlugin {
 	 * @private
 	 * @returns {Object}
 	 */
-	getConfig () {
+	getConfig() {
 		return this.config
 	}
 
@@ -152,7 +155,7 @@ class BasePlugin {
 	 * @returns {BasePlugin} this
 	 * @chainable
 	 */
-	bindListeners () {
+	bindListeners() {
 		// Prepare
 		const pluginInstance = this
 		const docpad = this.docpad
@@ -180,7 +183,7 @@ class BasePlugin {
 	 * @returns {BasePlugin} this
 	 * @chainable
 	 */
-	bindEvents () {
+	bindEvents() {
 		return this.addListeners()
 	}
 
@@ -189,7 +192,7 @@ class BasePlugin {
 	 * @returns {BasePlugin} this
 	 * @chainable
 	 */
-	addListeners () {
+	addListeners() {
 		// Prepare
 		const pluginInstance = this
 		const docpad = this.docpad
@@ -204,7 +207,10 @@ class BasePlugin {
 			if (typeChecker.isFunction(eventHandler)) {
 				// Apply the priority
 				if (eventHandler.priority == null) {
-					eventHandler.priority = pluginInstance[eventName + 'Priority'] || pluginInstance.priority || null
+					eventHandler.priority =
+						pluginInstance[eventName + 'Priority'] ||
+						pluginInstance.priority ||
+						null
 				}
 
 				try {
@@ -212,15 +218,12 @@ class BasePlugin {
 					if (eventHandler.priority) {
 						eventHandler.name += `(priority ${eventHandler.priority})`
 					}
-				}
-				catch (ignoredError) {
+				} catch (ignoredError) {
 					// newer versions of node do not allow writing the name property on functions, as it is readonly
 				}
 
 				// Wrap the event handler, and bind it to docpad
-				docpad
-					.off(eventName, eventHandler)
-					.on(eventName, eventHandler)
+				docpad.off(eventName, eventHandler).on(eventName, eventHandler)
 			}
 		})
 
@@ -233,7 +236,7 @@ class BasePlugin {
 	 * @returns {BasePlugin} this
 	 * @chainable
 	 */
-	removeListeners () {
+	removeListeners() {
 		// Prepare
 		const pluginInstance = this
 		const docpad = this.docpad
@@ -261,7 +264,7 @@ class BasePlugin {
 	 * @returns {BasePlugin} this
 	 * @chainable
 	 */
-	destroy () {
+	destroy() {
 		this.removeListeners()
 		return this
 	}
@@ -270,7 +273,7 @@ class BasePlugin {
 	 * Is the plugin enabled?
 	 * @return {Boolean}
 	 */
-	isEnabled () {
+	isEnabled() {
 		return this.config.enabled !== false
 	}
 
@@ -282,17 +285,14 @@ class BasePlugin {
 	 * 	If omitted, will return `true` to indicate that the class is a DocPad Plugin class.
 	 * @returns {boolean}
 	 */
-	static isDocPadPlugin (value) {
+	static isDocPadPlugin(value) {
 		if (value != null) {
 			return value instanceof this
-		}
-		else {
+		} else {
 			return true
 		}
 	}
-
 }
-
 
 // ---------------------------------
 // Export Plugin

@@ -1,24 +1,24 @@
 'use strict'
 
-const joe = require('joe')
+const kava = require('kava')
 const BasePlugin = require('./')
 
 const opts = {
 	config: {},
 	docpad: {
 		config: {
-			plugins: {}
+			plugins: {},
 		},
-		getEvents () {
+		getEvents() {
 			return []
 		},
-		mergeConfigs () {
+		mergeConfigs() {
 			return {}
-		}
-	}
+		},
+	},
 }
 
-joe.suite('baseplugin', function (suite, test) {
+kava.suite('baseplugin', function (suite, test) {
 	test('can instantiate', function () {
 		const b = new BasePlugin(opts)
 	})
