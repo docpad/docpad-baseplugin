@@ -5,18 +5,6 @@
 -   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
 -   Minimum required node version changed from `node: >=0.10` to `node: >=10` to keep up with mandatory ecosystem changes
 
-## v1.3.0 2020 August 5
-
--   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
-
-## v1.2.0 2020 August 5
-
--   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
-
-## v1.1.0 2020 August 5
-
--   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
-
 ## v1.0.3 2018 September 7
 
 -   Remove `setInstanceConfig` and make use of DocPad 6.82.0's new `mergeConfigs` method
