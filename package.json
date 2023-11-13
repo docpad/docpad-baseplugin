@@ -95,7 +95,7 @@
     "eslint-config-bevry": "^3.18.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "jsdoc": "^3.6.5",
+    "jsdoc": "^4.0.2",
     "kava": "^5.10.0",
     "prettier": "^2.0.5",
     "projectz": "^2.13.0",
