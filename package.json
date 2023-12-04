@@ -84,7 +84,7 @@
   "main": "source/index.js",
   "dependencies": {
     "eachr": "^4.5.0",
-    "errlop": "^4.1.0",
+    "errlop": "^8.0.0",
     "extendr": "^5.13.0",
     "typechecker": "^7.13.0"
   },
